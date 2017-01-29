@@ -1,0 +1,24 @@
+\frametitle{Generování slov v procvičování - testování}
+    \begin{columns}[T] % align columns
+        \begin{column}{.48\textwidth}
+            \only<1> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner.png}\end{center}}
+            \only<2> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-1.png}\end{center}}
+            \only<3> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-2.png}\end{center}}
+            \only<4> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-3.png}\end{center}}
+            \only<5> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-4.png}\end{center}}
+            \only<6-> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-5.png}\end{center}}
+        \end{column}%
+        \hfill%
+        \begin{column}{.48\textwidth}
+            \begin{block}{Testování}
+                \begin{itemize}
+                    \item<2-> 1. průchod
+                    \item<3-> 2. průchod
+                    \item<4-> 3. průchod
+                    \item<5-> správná a neúplná odpověď
+                    \item<6-> špatná odpověď
+                    \item<7-> konec: všechna slova jsou dokončená
+                \end{itemize}
+            \end{block}
+        \end{column}%
+    \end{columns}
