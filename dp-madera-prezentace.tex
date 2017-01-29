@@ -58,8 +58,8 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
             %         - 2 fáze (zjištění úrovně žáka, samotné procvičování)
             % - aktivní vzpomínání a rozpoznání slova
             %     - algoritmus
-        \item technologie
-        % \item grafické rozhraní
+        % \item technologie
+        \item grafické rozhraní
         \item shrnutí
     \end{itemize}
 \end{frame}
@@ -103,7 +103,7 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
             \item naučit a procvičovat slova
             \item připomínat naučená slova
             \item zvuková, textová a obrazová forma
-            \item motivace
+            \item motivovat
         \end{itemize}
     \end{block}
 \end{frame}
@@ -118,8 +118,9 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
         \item tvorba testovacích sad
         \item účelem není testovat žáky
         % nemá za úkol zkoušet slovíčka, spíše usnadnit přípravu žáků na následující hodinu a zároveň rozvíjet slovní zásobu
-        \item efektivně rozvíjet slovní zásobu dle probírané učebnice
+        \item efektivně rozvíjet slovní zásobu podle probírané učebnice
         % rozvíjet slovní zásobu
+        \item $\rightarrow$ algoritmy na metodě rozloženého opakování
     \end{itemize}
 \end{frame}
 
@@ -166,12 +167,37 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
     \frametitle{Připomínání slov}
     \begin{itemize}
         \item metoda rozloženého opakování (Supermemo)
-        \item základ pro efektivní učení slov
+        \item intervaly: 1d, 3d, 13d, 24d, 1,7m 
     \end{itemize}
     \begin{center}
         \includegraphics[width=6.5cm]{./img/forgetting-curve.pdf}\\
     \end{center}
 \end{frame}
+
+\begin{frame}[t]
+    \frametitle{Grafické rozhraní}
+    \begin{itemize}
+        \item frontend: javscriptová SPA
+        \item backend: HTTP API v Pythonu
+    \end{itemize}
+    \begin{center}
+        \includegraphics[width=\textwidth]{./img/gui.png}\\
+    \end{center}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Závěr}
+    \begin{itemize}
+        \item byla provedena rešerše existujících aplikací 
+        \item byla navržena a implentována aplikace
+        \item umožňuje správu slovíček, tříd a testovacích sad
+        \item umožňuje automaticky získat další interpretační formy slova (zvuk, obrázek)
+        \item motivující a adaptivní procvičování
+        \item připomínání slovíček v efektivních intervalech
+        \item testování aplikace externími uživateli
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}
 \begin{center}
@@ -183,21 +209,34 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
 \begin{frame}[noframenumbering]
 \begin{center}
     \frametitle{Existují další možnosti stanovení obtížnosti slovíček? Jakým způsobem by změna metody ovlivnila aplikaci?}
-    
+    % ohledně globální obtížnosti...
+    % - aktuálně globání obtížnost je tvořena váženým průměrem v podobě délky slov, podobnost s výrazem v mateřekém jazyce a výskyt speciálních znaků jako přehlasovaná písmena, dvojitý výskyt apod.
+    % mohlo by se zakomponovat do průměru i hodnota, jak často se na slovo v daném jazyku naráží - most frequent words
+    % ještě lepší vyhodnocení obtížnosti na základě fonetické podobnosti - aktuálně se porovnává Levenshteinovou vzdáleností
+    % vyhodnocovat obtížnost slova statisticky -> problém, ale že na začátku jsou data prázdná
+
+    % aplikaci by změna metody neovlivnila, bylo by nutné návratovou hodnotu nové metody normalizovat do intervalu <0,1)
+
 \end{center}
 \end{frame}
 
 \begin{frame}[noframenumbering]
 \begin{center}
     \frametitle{Jaký může být důsledek toho, že není použito API dle REST ale vlastní řešení?}
-    
+    % api nemusí být intuitivní, což může ztěžovat případné rozšíření dalších klientů používajícíh APi.
+    % například při programování nového klienta komunikující s API se bude muset nastudovat struktura, jelikož aktuální API nevyužívá princip RESTful, kde společně s daty se zasílá i hypertextové odkazy představující další stavy aplikace
+    % myšlenka stejně byla hodně logiky (generování slovíček apod.) přesunout na klienta, API slouží pouze jako úložiště 
 \end{center}
 \end{frame}
 
 \begin{frame}[noframenumbering]
 \begin{center}
     \frametitle{Pro práci byla zvolena integrace se službami Google. Byly zvažovány i další možnosti, např. integrace výkladového slovníku apod.?}
-    
+    % pouze k doplnění ke slovu je možné uložit i definici a použití ve větě
+    % ano byla zvážena možnost výkladového slovníku, ale nakonec se od této možnosti distancovalo, jelikož každý vyučující může slovo definovat žákům v hodinách po svém a mohlo by dojít k žáci by potom cizím definicím nemuseli porozumět
+    % zároveň vyučující přizpůsobí definici slov dle vlastního uvážení - bude využívat takovou slovní zásobu, která odpovídá úrovni žáků
+    % další možností, která byla v úvaze, bylo získávat překlad slova, ale znovu by vyučující mohli narážet na problém, že významy slov zcela nekorespondují s těmi, které sdělovali dětem - například více významová slova
+
 \end{center}
 \end{frame}
 
