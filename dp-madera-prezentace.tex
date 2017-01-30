@@ -32,142 +32,83 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
     \frametitle{Obsah}
     \begin{itemize}
         \item problematika
-            % - učení slovíček při hodinách -> vlastní seznamy slovíček
-            % - ostatní řešení žákům neposkytují přizpůsobení úrovně ani obsahu
-            % - cílem diplomové práce je provést analýzu, jak zefektivnit učení a motivovat žáky k procvičování slovíček 
-            % - na základě zjištěných poznatků navrhnout a implementovat aplikaci, která umožní rozvíjet cizojazyčnou slovní zásobu % - a zároveň vyučujícím poskytne nástroj pro správu a prezentaci slovíček pro žáky
-        \item představení aplikace
-            % - koncept (funkcionalita)
-            %     + každý může tvořit
-            % - nástroj pro vyučující 
-            %     + tvorba učebnic (správa slovíček, modulů)
-            %         - import slov
-            %         - sdílení učebnic
-            %     + tvorba tříd (oddělené skupiny)
-            % - nástroj pro studenty
-            %     + procvičování slovíček z učebnic i vlastních
-            %     + připomínání slovíček v narůstajících intervalech
-            %         - permanentní zapamatování
-            % - automatizované poskytnutí zvukové, obrazové a textové formy
-            % - snaha o motivaci
-            % zvuková forma - syntéza pomocí Google Text To Speeach API
-        \item algoritmizace
-            % - metoda rozloženého opakování
-            %     - supermemo
-            %     - adaptovaný leiterův algoritmus (obrázek)
-            %         - 2 fáze (zjištění úrovně žáka, samotné procvičování)
-            % - aktivní vzpomínání a rozpoznání slova
-            %     - algoritmus
-        % \item technologie
+        \item funkce aplikace
         \item grafické rozhraní
-        \item shrnutí
+        \item architektura aplikace
+        \item implementované algoritmy
+        \item závěr
     \end{itemize}
 \end{frame}
 
 
 \begin{frame}[t]
     \frametitle{Problematika}
-    \begin{block}{Učení slovníček cizího jazyka}
     \begin{itemize}[<+->]
-        \item systém vlastního slovníčku
-        % neorganizované, 
-        % Žáci si při výuce cizího jazyka obvykle vedou vlastní slovníček, do kterého si zapisují nově nabytá slova. V době přípravy na test rychle slova zopakují a následně z krátkodobé paměti test napíšou, což má za následek, že pokud naučená slova dále neopakují, dojde k jejich zapomenutí. Navíc se postupně slovíčka hromadí a není v silách žáka je opakovat.
-        \item výukové aplikace
-    \end{itemize}
-    \end{block}
-    
-    \begin{block}{Výukové nástroje a aplikace}
-    \begin{itemize}[<+->]
-        \item neumožňují definici vlastních slov
-        \item přizpůsobit zásobu aktuálně probírané
-        \item přizpůsobení úrovni žáka
-    \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}[c]
-    \frametitle{Cíle práce}
-    \begin{itemize}[<+->]
-        \item vytvořit výukový nástroj
-    \end{itemize}
-    
-    \begin{block}{Pro vyučující}
-    \begin{itemize}[<+->]
-        \item správa učebnic se slovíčky
-        \item zpřístupnění slovíček žákům
-    \end{itemize}
-    \end{block}
-
-    \begin{block}{Pro žáky}
-        \begin{itemize}[<+->]
-            \item naučit a procvičovat slova
-            \item připomínat naučená slova
-            \item zvuková, textová a obrazová forma
-            \item motivovat
+        \item podnět od rodičů a učitelů
+        \item vlastní slovníček
+        \begin{itemize}
+            \item chybí organizace
+            \item bez adaptivního procvičování
+            \item problematické opakování
         \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}[t]
-    \frametitle{Hlavní myšlenky aplikace}
-    % možná obrázek místo textu
-    \begin{itemize}[<+->]
-        \item nejen pro vyučující a žáky (kdokoliv)
-        \item sloužit jako portál
-        \item sdílení učebnic
-        \item tvorba testovacích sad
-        \item účelem není testovat žáky
-        % nemá za úkol zkoušet slovíčka, spíše usnadnit přípravu žáků na následující hodinu a zároveň rozvíjet slovní zásobu
-        \item efektivně rozvíjet slovní zásobu podle probírané učebnice
-        % rozvíjet slovní zásobu
-        \item $\rightarrow$ algoritmy na metodě rozloženého opakování
+        \item aktuální výukové aplikace
+        \begin{itemize}
+            \item připravené pro samouky
+            \item neumožňují se přizpůsobit aktuálně probírané slovní zásobě
+            \item nelze sdílet slovní zásobu (učitel $\rightarrow$ žák)
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}[t]
-    \frametitle{Generování slov v procvičování - inicializace}
-    \only<1> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm.png}\end{center}}
-    \only<2> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm-0.png}\end{center}}
-    \only<3> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm-1.png}\end{center}}
-    \only<4> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm-2.png}\end{center}}
-    \only<5> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm-3.png}\end{center}}
-    \only<6> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm-4.png}\end{center}}
-    \only<7> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm-5.png}\end{center}}
-    \only<8> {\begin{center}\includegraphics[width=8cm]{./img/words-gen-algorithm-6.png}\end{center}}
+    \frametitle{Funkce aplikace}
+    \begin{itemize}[<+->]
+        \item správa slov (učebnice, moduly, sdílení)
+        \item hromadný import (automatizace, Google API)
+        \item testovací sady
+        \item adaptivní procvičování slov
+        \item připomínání naučených slov
+        \item motivace (generování slov, statistiky)
+    \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{Generování slov v procvičování - testování}
-    \begin{columns}[T] % align columns
-        \begin{column}{.48\textwidth}
-            \only<1> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner.png}\end{center}}
-            \only<2> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-1.png}\end{center}}
-            \only<3> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-2.png}\end{center}}
-            \only<4> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-3.png}\end{center}}
-            \only<5> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-4.png}\end{center}}
-            \only<6-> {\begin{center}\includegraphics[width=\textwidth]{./img/words-gen-algorithm-leitner-5.png}\end{center}}
-        \end{column}%
-        \hfill%
-        \begin{column}{.48\textwidth}
-            \begin{block}{Testování}
-                \begin{itemize}
-                    \item<2-> 1. průchod
-                    \item<3-> 2. průchod
-                    \item<4-> 3. průchod
-                    \item<5-> správná a neúplná odpověď
-                    \item<6-> špatná odpověď
-                    \item<7-> konec: všechna slova jsou dokončená
-                \end{itemize}
-            \end{block}
-        \end{column}%
-    \end{columns}
+\begin{frame}[t]
+    \frametitle{Grafické rozhraní - editace slov v učebnici}
+    \begin{center}
+        \includegraphics[width=\textwidth]{./img/gui-textbook-editor.png}\\
+    \end{center}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Grafické rozhraní - procvičování slov}
+    \begin{center}
+        \includegraphics[width=\textwidth]{./img/gui-testing.png}\\
+    \end{center}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Architektura aplikace}
+    \includegraphics[width=\textwidth]{./img/architecture.png}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Generování slov pro procvičování}
+    \begin{itemize}
+        \item modifikovaný Leitnerův algoritmus
+    \end{itemize}
+    \only<1> {\includegraphics[width=\textwidth]{./img/words-gen-algorithm-0.png}}
+    \only<2> {\includegraphics[width=\textwidth]{./img/words-gen-algorithm-1.png}}
+    \only<3> {\includegraphics[width=\textwidth]{./img/words-gen-algorithm-2.png}}
+    \only<4> {\includegraphics[width=\textwidth]{./img/words-gen-algorithm-3.png}}
+    \only<5> {\includegraphics[width=\textwidth]{./img/words-gen-algorithm-4.png}}
 \end{frame}
 
 \begin{frame}[t]
     \frametitle{Připomínání slov}
     \begin{itemize}
-        \item metoda rozloženého opakování (Supermemo)
-        \item intervaly: 1d, 3d, 13d, 24d, 1,7m 
+        \item metoda rozloženého opakování
+        \item implementovaný algoritmus Supermemo
+        \item intervaly: 1d, 3d, 13d, 24d, 1m, 7m 
     \end{itemize}
     \begin{center}
         \includegraphics[width=6.5cm]{./img/forgetting-curve.pdf}\\
@@ -175,23 +116,12 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
 \end{frame}
 
 \begin{frame}[t]
-    \frametitle{Grafické rozhraní}
-    \begin{itemize}
-        \item frontend: javscriptová SPA
-        \item backend: HTTP API v Pythonu
-    \end{itemize}
-    \begin{center}
-        \includegraphics[width=\textwidth]{./img/gui.png}\\
-    \end{center}
-\end{frame}
-
-\begin{frame}[t]
     \frametitle{Závěr}
-    \begin{itemize}
-        \item byla provedena rešerše existujících aplikací 
-        \item byla navržena a implentována aplikace
-        \item umožňuje správu slovíček, tříd a testovacích sad
-        \item umožňuje automaticky získat další interpretační formy slova (zvuk, obrázek)
+    \begin{itemize}[<+->]
+        \item rešerše existujících aplikací 
+        \item navržena a implementována aplikace
+        \item správa a import slovíček, tříd a testovacích sad
+        \item automatické získání další interpretační formy slova (zvuk, obrázek)
         \item motivující a adaptivní procvičování
         \item připomínání slovíček v efektivních intervalech
         \item testování aplikace externími uživateli
@@ -207,31 +137,52 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |} {daniel.ma
 \end{frame}
 
 \begin{frame}[noframenumbering]
-\begin{center}
     \frametitle{Existují další možnosti stanovení obtížnosti slovíček? Jakým způsobem by změna metody ovlivnila aplikaci?}
-    % ohledně globální obtížnosti...
-    % - aktuálně globání obtížnost je tvořena váženým průměrem v podobě délky slov, podobnost s výrazem v mateřekém jazyce a výskyt speciálních znaků jako přehlasovaná písmena, dvojitý výskyt apod.
-    % mohlo by se zakomponovat do průměru i hodnota, jak často se na slovo v daném jazyku naráží - most frequent words
-    % ještě lepší vyhodnocení obtížnosti na základě fonetické podobnosti - aktuálně se porovnává Levenshteinovou vzdáleností
-    % vyhodnocovat obtížnost slova statisticky -> problém, ale že na začátku jsou data prázdná
 
-    % aplikaci by změna metody neovlivnila, bylo by nutné návratovou hodnotu nové metody normalizovat do intervalu <0,1)
-
-\end{center}
+    \begin{itemize}
+        \item aktuálně obtížnost slov - vážený průměr
+        \begin{itemize}
+            \item délka slov, podobnost s výrazem v mateřském jazyce, výskyt přehlasování a dvojitých písmen
+            \item $\rightarrow$ lze parametry editovat
+        \end{itemize}
+        \item další možnosti
+        \begin{itemize}
+            \item fonetická podobnost
+            \item hodnota častého výskytu (most frequent words)
+            \item statisticky
+        \end{itemize}
+        \item ovlivnila by motivaci žáků (nutných správných opakování pro dokončení slova)
+        \item není stěžejní, je později přepsáno uživatelskou obtížností
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[noframenumbering]
-\begin{center}
     \frametitle{Jaký může být důsledek toho, že není použito API dle REST ale vlastní řešení?}
-    % api nemusí být intuitivní, což může ztěžovat případné rozšíření dalších klientů používajícíh APi.
-    % například při programování nového klienta komunikující s API se bude muset nastudovat struktura, jelikož aktuální API nevyužívá princip RESTful, kde společně s daty se zasílá i hypertextové odkazy představující další stavy aplikace
-    % myšlenka stejně byla hodně logiky (generování slovíček apod.) přesunout na klienta, API slouží pouze jako úložiště 
-\end{center}
+    \begin{itemize}
+        \item ztížené programování dalšího klienta 
+        \item nutné nastudování přesné struktury API (popisuje RAML soubor)
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[noframenumbering]
 \begin{center}
     \frametitle{Pro práci byla zvolena integrace se službami Google. Byly zvažovány i další možnosti, např. integrace výkladového slovníku apod.?}
+
+    \begin{itemize}
+        \item integrace výkladového slovníku a překladu slova
+        \begin{itemize}
+            \item zodpovědnost ponechána na vyučujícím
+            \item přizpůsobí definici slov úrovni cílených žáků
+            \item různé významy by mohly být pro žáky matoucí
+        \end{itemize}
+        \item integrace rozpoznání řeči
+        \begin{itemize}
+            \item kontrola správné výslovnosti
+            \item možnost využít služeb (placené)
+            \item vlastní implementace - další možné rozšíření (náročné)
+            \item nutná HW podpora mikrofonu
+        \end{itemize}
+    \end{itemize}
     % pouze k doplnění ke slovu je možné uložit i definici a použití ve větě
     % ano byla zvážena možnost výkladového slovníku, ale nakonec se od této možnosti distancovalo, jelikož každý vyučující může slovo definovat žákům v hodinách po svém a mohlo by dojít k žáci by potom cizím definicím nemuseli porozumět
     % zároveň vyučující přizpůsobí definici slov dle vlastního uvážení - bude využívat takovou slovní zásobu, která odpovídá úrovni žáků
